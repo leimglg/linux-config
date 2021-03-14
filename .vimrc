@@ -87,7 +87,7 @@ inoremap ,p ![](<++>) <++><Esc>F[a
 inoremap ,a [](<++>) <++><Esc>F[a
 inoremap ,l --------<Enter>
 
-call plug#begin('.vim/plugged')
+call plug#begin('~/.vim/plugged')
 " file navigation, tt to show
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -108,6 +108,8 @@ nnoremap tt :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'h'
 let g:NERDTreeMapPreviewSplit = 'gh'
+let g:NERDTreeMapCustomOpen = 'l'
+let g:NERDTreeMapCloseDir = 'j'
 let g:NERDTreeCustomOpenArgs = {'file':{'where': 'v', 'reuse': 'all', 'keepopen': 1}}
 
 " let g:mkdp_path_to_chrome = "termux-open"
