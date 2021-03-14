@@ -1,4 +1,5 @@
 let mapleader = ";"
+set mouse=
 inoremap jj <Esc>
 set number
 syntax on
@@ -9,6 +10,14 @@ set wildmenu
 set nohlsearch
 set smartcase 
 set nocompatible
+set encoding=utf-8
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=0
+set shortmess+=c
+set ttimeoutlen=5
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -92,13 +101,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Taglist, show function list
-" Plug 'majutsushi/tagbar', {'on': 'TagbarOpenAutoClose'}
+Plug 'majutsushi/tagbar', {'on': 'TagbarOpenAutoClose'}
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Error checking
 " Plug 'W0rp/ale'
 " markdown preview
-"  Plug 'iamcco/markdown'
+" Plug 'iamcco/markdown'
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
 call plug#end()
@@ -112,12 +123,15 @@ let g:NERDTreeMapCustomOpen = 'l'
 let g:NERDTreeMapCloseDir = 'j'
 let g:NERDTreeCustomOpenArgs = {'file':{'where': 'v', 'reuse': 'all', 'keepopen': 1}}
 
-" let g:mkdp_path_to_chrome = "termux-open"
+let g:mkdp_path_to_chrome = "termux-open"
 
 "         vim-table-mode
-" map <LEADER>tm :TableModeToggle<CR>
+map <LEADER>tm :TableModeToggle<CR>
 
-" nnoremap <F5> :call CompileRun()<CR>
+"         coc
+let g:coc_global_extensions = ['coc-json', 'coc-julia', 'coc-tsserver']
+
+nnoremap <F5> :call CompileRun()<CR>
 " func! CompileRun()
 	" if &filetype == 'julia'
 		" exec "!julia %"
