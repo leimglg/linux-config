@@ -1,5 +1,5 @@
-let mapleader = ";"
-set mouse=
+let mapleader = " "
+set mouse=a
 inoremap jj <Esc>
 set number
 syntax on
@@ -16,7 +16,8 @@ set nobackup
 set nowritebackup
 set updatetime=0
 set shortmess+=c
-set ttimeoutlen=5
+set showmatch
+runtime macros/matchit.vim
 
 filetype on
 filetype plugin on
@@ -68,6 +69,10 @@ noremap sL :set splitright<CR>:vsplit<CR>
 noremap sJ :set nosplitright<CR>:vsplit<CR>
 noremap sI :set nosplitbelow<CR>:split<CR>
 noremap sK :set splitbelow<CR>:split<CR>
+noremap s<C-l> <C-w>L
+noremap s<C-j> <C-w>J
+noremap s<C-u> <C-w>I
+noremap s<C-k> <C-w>K
 noremap si <C-w>k
 noremap sj <C-w>h
 noremap sk <C-w>j
@@ -82,7 +87,15 @@ noremap s<right> :vertical resize +5<CR>
 noremap tc :tabe<CR>
 noremap tj :-tabnext<CR>
 noremap tl :+tabnext<CR>
+noremap tJ :-tabmove<CR>
+noremap tL :+tabmove<CR>
 
+noremap <LEADER>/ :set splitright<CR>:vsplit<CR>:vertical res -20<CR>:term<CR>i
+tnoremap jj <C-\><C-n>
+noremap <LEADER>, %
+
+
+" noremap ,f <ESC>/<++><CR>:nohlsearch<CR>c4l
 inoremap ,f <ESC>/<++><CR>:nohlsearch<CR>c4l
 inoremap ,, <++>
 inoremap ,n ---<Enter><Enter>
@@ -95,6 +108,11 @@ inoremap ,h ==== <++><Esc>F=hi
 inoremap ,p ![](<++>) <++><Esc>F[a
 inoremap ,a [](<++>) <++><Esc>F[a
 inoremap ,l --------<Enter>
+
+noremap <LEADER>sc :set spell!<CR>
+noremap <LEADER>rf :r !figlet 
+noremap \s :%s//g<left><left>
+noremap <LEADER>sw :set wrap<CR>
 
 call plug#begin('~/.vim/plugged')
 " file navigation, tt to show
@@ -112,6 +130,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 "           NERDTree
@@ -132,13 +151,13 @@ map <LEADER>tm :TableModeToggle<CR>
 let g:coc_global_extensions = ['coc-json', 'coc-julia', 'coc-tsserver']
 
 nnoremap <F5> :call CompileRun()<CR>
-" func! CompileRun()
-	" if &filetype == 'julia'
-		" exec "!julia %"
-	" elseif &filetype == 'markdown'
-	" 	exec "MarkdownPreview"
-	" elseif &filetype == 'vimwiki'
-	" 	exec "MarkdownPreview"
-	" endif
-" endfunc
+func! CompileRun()
+	if &filetype == 'julia'
+		exec "!julia %"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'vimwiki'
+		exec "MarkdownPreview"
+	endif
+endfunc
 
