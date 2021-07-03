@@ -1,10 +1,3 @@
-alias nv="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias tmux="tmux -2"
-export PATH=$HOME/software:$PATH
-export TERM="screen-256color"
-
 bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
 bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
 bindkey -s '^t' "history | fzf --multi^M"
@@ -13,17 +6,32 @@ setopt PROMPT_SUBST
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
+autoload -U compinit
+compinit
+bindkey -v
 
 # PS1="%n@%M %F{yellow}$(git branch 2>/dev/null | grep '^*' | sed s/..//) %B%F{blue}%2~ %F{green}|>%f%b "
-PS1="%B%F{blue}%~ %F{green}>%f%b "
+PS1="%B%F{cyan}%~ %F{green}>%f%b "
 RPROMPT='%n@%M %*'
 
+source ~/.config/aliases.zshrc
+source ~/.config/exports.zshrc
+
+#   auto suggestion
 if [ ! -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=2'
 
+#   syntax highlighting
+if [ ! -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+fi
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 
 # CASE_SENSITIVE="true"
 
