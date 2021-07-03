@@ -2,6 +2,7 @@ alias nv='nvim'
 alias vim='nvim'
 alias vi='nvim'
 alias tmux='tmux -2'
+export TERM=xterm-256color
 
 # fzf
 bind '"\C-f": " $(find -L | fzf --multi --preview \"cat {}\")\n"'
