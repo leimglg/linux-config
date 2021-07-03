@@ -8,7 +8,7 @@ alias vim="nvim"
 alias tmux="tmux -2"
 export ZSH="/data/data/com.termux/files/home/.oh-my-zsh"
 export PATH=$HOME/software:$PATH
-bindkey -s "^f" ' $(fzf --multi)^M'
+bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
 bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
 bindkey -s '^t' "history | fzf --multi^M"
 
