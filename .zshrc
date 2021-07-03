@@ -5,7 +5,7 @@ alias tmux="tmux -2"
 export PATH=$HOME/software:$PATH
 export TERM="screen-256color"
 
-bindkey -s "^f" ' $(fzf --multi)^M'
+bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
 bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
 bindkey -s '^t' "history | fzf --multi^M"
 
@@ -13,12 +13,6 @@ setopt PROMPT_SUBST
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)       # Include hidden files.
 
 # PS1="%n@%M %F{yellow}$(git branch 2>/dev/null | grep '^*' | sed s/..//) %B%F{blue}%2~ %F{green}|>%f%b "
 PS1="%B%F{blue}%~ %F{green}>%f%b "
