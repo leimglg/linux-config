@@ -1,7 +1,8 @@
-alias ls="ls --color=auto"
-alias ll="ls -l --color=auto"
-alias la="ls -a --color=auto"
-alias lh="ls -l -h --color=auto"
+alias ls="ls --color=auto"                                                                                                                                                                                                             
+alias ll="ls -l"
+alias la="ls -a"
+alias lh="ll -h"
+alias ld="ls -d"
 
 alias nv="nvim"
 alias vi="nvim"
