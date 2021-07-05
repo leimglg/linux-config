@@ -15,6 +15,7 @@ setopt autocd extendedglob notify
 unsetopt beep
 
 zmodload zsh/complist
+autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
 setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
@@ -37,7 +38,6 @@ zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions comm
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' keep-prefix true
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-autoload -U compinit; compinit
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
