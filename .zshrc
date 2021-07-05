@@ -1,3 +1,5 @@
+export SHELL="~/bin/zsh"
+
 bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
 bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
 bindkey -s '^t' "history | fzf --multi^M"
@@ -5,21 +7,20 @@ bindkey -s '^t' "history | fzf --multi^M"
 alias d='dirs -v'
 for index ({0..9}) alias "$index"="cd +${index}"; unset index
 
-
-
 setopt PROMPT_SUBST
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
+setopt autocd extendedglob notify                                                                                                                                                                                                      
+unsetopt beep
 
 zmodload zsh/complist
-autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
 setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' complete true
@@ -36,6 +37,7 @@ zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions comm
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' keep-prefix true
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+autoload -U compinit; compinit
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
