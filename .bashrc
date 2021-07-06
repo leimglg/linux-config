@@ -1,3 +1,4 @@
+[ -f $HOME/bin/zsh ] && exec $HOME/bin/zsh -l
 
 alias nv='nvim'
 alias vim='nvim'
