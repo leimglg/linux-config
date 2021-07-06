@@ -17,7 +17,7 @@ unsetopt beep
 zmodload zsh/complist
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
-setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
+unsetopt MENU_COMPLETE        # Automatically highlight first element of completion menu
 setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 zstyle ':completion:*' use-cache on
@@ -69,7 +69,7 @@ cursor_mode
 
 # PS1="%n@%M %F{yellow}$(git branch 2>/dev/null | grep '^*' | sed s/..//) %B%F{blue}%2~ %F{green}|>%f%b "
 PS1="%B%F{cyan}%~ %F{green}>%f%b "
-RPROMPT='%B%F{yellow}$([ -d .git ] || [ -d ../.git ] && git branch 2>/dev/null | grep "^*" | sed s/..//)%b%f %n@%M %*'
+RPROMPT='%B%F{yellow}$([ -d .git ] || [ -d ../.git ] && git branch 2>/dev/null | grep "^*" | sed s/..//)%b%f %n@%M %T'
 
 source ~/.config/aliases.zshrc
 source ~/.config/exports.zshrc
