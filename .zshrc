@@ -13,6 +13,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt autocd extendedglob notify                                                                                                                                                                                                      
 unsetopt beep
+echo -ne '\e[6 q'
 
 zmodload zsh/complist
 autoload -U compinit; compinit
@@ -42,30 +43,6 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-
-bindkey -v
-export KEYTIMEOUT=1
-cursor_mode() {
-    cursor_block='\e[2 q'
-    cursor_beam='\e[6 q'
-    function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] ||
-            [[ $1 = 'block' ]]; then
-            echo -ne $cursor_block
-        elif [[ ${KEYMAP} == main ]] ||
-            [[ ${KEYMAP} == viins ]] ||
-            [[ ${KEYMAP} = '' ]] ||
-            [[ $1 = 'beam' ]]; then
-            echo -ne $cursor_beam
-        fi
-    }
-    zle-line-init() {
-        echo -ne $cursor_beam
-    }
-    zle -N zle-keymap-select
-    zle -N zle-line-init
-}
-cursor_mode
 
 # PS1="%n@%M %F{yellow}$(git branch 2>/dev/null | grep '^*' | sed s/..//) %B%F{blue}%2~ %F{green}|>%f%b "
 PS1="%B%F{cyan}%~ %F{green}>%f%b "
