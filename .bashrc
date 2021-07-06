@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 alias nv='nvim'
 alias vim='nvim'
 alias vi='nvim'
