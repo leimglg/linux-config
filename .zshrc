@@ -19,7 +19,7 @@ autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 unsetopt MENU_COMPLETE        # Automatically highlight first element of completion menu
 setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
-setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
+# setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' menu select
