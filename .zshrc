@@ -1,4 +1,5 @@
-export SHELL="~/bin/zsh"
+export SHELL=$(which zsh)
+eval `dircolors`
 
 bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
 bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
