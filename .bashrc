@@ -1,5 +1,6 @@
-[ -f $HOME/bin/zsh ] && exec $HOME/bin/zsh -l
+[ -f $HOME/bin/zsh ] && [ "$SSH_TTY" ] && exec $HOME/bin/zsh -l
 
+eval `dircolors`
 alias nv='nvim'
 alias vim='nvim'
 alias vi='nvim'
