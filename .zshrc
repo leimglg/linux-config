@@ -57,7 +57,7 @@ if [ ! -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=2'
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 #   syntax highlighting,  must be sourced at the end of the .zshrc file
 if [ ! -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
