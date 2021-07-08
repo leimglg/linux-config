@@ -13,6 +13,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # make interactive stuff only works if line editing is on
 if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]]; then
+    # only works when ssh remotely
     [ "$SSH_TTY" ] && exec $(which zsh) -l
 
     #             fzf
