@@ -17,7 +17,8 @@ if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]
     [ "$SSH_TTY" ] && exec $(which zsh) -l
 
     #             fzf
-    bind '"\C-f": " $(find -L | fzf --multi --preview \"cat {}\")\n"'
-    bind '"\C-g": "cd $(find -type d | fzf --multi)\n"'
-    bind '"\C-t": "history | fzf --multi\n"'
+    bind '"\C-ff": " $(find -type f | fzf --multi --preview \"cat {}\")\n"'
+    bind '"\C-fr": " $(fzf --bind \"change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true\" --ansi --disabled)\n"'
+    bind '"\C-fd": "cd $(find -type d | fzf --multi)\n"'
+    bind '"\C-fh": "history | fzf --multi\n"'
 fi
