@@ -3,9 +3,10 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 eval `dircolors`
 
-bindkey -s "^f" ' $(find -L | fzf --multi --preview "cat {}")^M'
-bindkey -s '^g' 'cd $(find -type d | fzf --multi)^M'
-bindkey -s '^t' "history | fzf --multi^M"
+bindkey -s "^ff" ' $(find -L | fzf --multi --preview "cat {}")^M'
+bindkey -s "^fr" ' $(fzf --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" --ansi --disabled)^M'
+bindkey -s '^fg' 'cd $(find -type d | fzf --multi)^M'
+bindkey -s '^ft' "history | fzf --multi^M"
 
 setopt AUTO_PUSHD           # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
