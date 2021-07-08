@@ -7,6 +7,7 @@ alias ld="ls -d"
 alias nv="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 
 alias tmux="tmux -2"
 
