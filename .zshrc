@@ -17,7 +17,7 @@ setopt PROMPT_SUBST
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$XDG_CONFIG_HOME/histfile"
+HISTFILE="$HOME/.config/histfile"
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt autocd extendedglob notify
 unsetopt beep
