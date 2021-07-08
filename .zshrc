@@ -52,7 +52,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
-PS1="%B%F{blue}%~ %F{green}>%f%b "
+PS1="%B%F{cyan}%~ %F{green}>%f%b "
 RPROMPT='%B%F{yellow}$([ -d .git ] || [ -d ../.git ] && git branch 2>/dev/null | grep "^*" | sed s/..//)%b%f %n@%M %T'
 
 zstyle :compinstall filename '/home/mlei/.zshrc'
