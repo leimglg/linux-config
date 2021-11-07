@@ -1,6 +1,6 @@
 sudo apt update
 sudo apt upgrade
-sudo apt install neovim fzf rg
+sudo apt install neovim fzf rg tmux
 sudo apt install julia 
 # install vim-plug for neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
