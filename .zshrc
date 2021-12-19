@@ -4,7 +4,7 @@ export VISUAL="nvim"
 eval `dircolors`
 
 bindkey -s "^ff" ' $(find -type f | fzf --multi --preview "cat {}")^M'
-bindkey -s "^fr" ' $(fzf --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" --ansi --disabled)^M'
+bindkey -s "^fr" ' $(fzf --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" --ansi)^M'
 bindkey -s '^fd' 'cd $(find -type d | fzf --multi)^M'
 bindkey -s '^fh' '$(history | fzf --multi)^M'
 
