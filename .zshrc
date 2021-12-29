@@ -1,6 +1,7 @@
 export SHELL=$(which zsh)
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERM=xterm-256color
 eval `dircolors`
 
 bindkey -s "^ff" ' $(find -type f | fzf --multi --preview "cat {}")^M'
